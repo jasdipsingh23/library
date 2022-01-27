@@ -5,14 +5,32 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./styles/style.css">
-    <script src="./scripts/main.js" defer></script>
     <title>Library</title>
 </head>
 <body>
     <h1>Lirary App</h1>
     
     <div class="add-book-container">
-        <button class="add">Add Book</button>
+        <div class="title">
+            <label>Title: </label>
+            <input type="text" name="title" id="title">
+        </div>
+
+        <div class="author">
+            <label>Author:</label>
+            <input type="text" name="author" id="author">
+        </div>
+
+        <div class="numPages">
+            <label>Number of Pages</label>
+            <input type="number" name="numPages" id="numPages">
+        </div>
+        <div class="read">
+            <label>Have you Read the Book?</label>
+            <input type="boolean" name="read" id="read">
+        </div>
+
+        <button class="add-btn" id="add-book">Add Book</button>
     </div>
 
     <div id="display-catalog" class="display-contanier">
@@ -21,5 +39,7 @@
     <div class="footer">
         Footer
     </div>
+
+    <script type="text/javascript" src="./scripts/main.js"></script>
 </body>
 </html>

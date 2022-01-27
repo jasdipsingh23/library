@@ -1,25 +1,5 @@
-document.body.onload = displayCatalog;
 
-let myLibrary = [
-    {
-        title: "test",
-        author: "jimmy",
-        numPages: "42",
-        read: false,
-    }, 
-    {
-        title: "test",
-        author: "jimmy",
-        numPages: "42",
-        read: false,
-    }, 
-    {
-        title: "test",
-        author: "jimmy",
-        numPages: "42",
-        read: false,
-    }
-];
+let myLibrary = [];
 
 function Book(title, author, numPages, read) {
     this.title = title;
@@ -32,18 +12,30 @@ function addBookToLibrary(book) {
     myLibrary.push(book);
 }
 
+let addBook = document.getElementById("add-book");
 
-function displayCatalog() {
-    const catalog = document.getElementById("display-catalog");
+addBook.addEventListener("click", (event) => {
+    let title = document.getElementById("title").value;
+    let author = document.getElementById("author").value;
+    let numPages = document.getElementById("numPages").value;
+    let hasRead = document.getElementById("read").value;
 
-    for(let obj in myLibrary) {
-        let div = document.createElement("div");
-        let text = "";
-        for(let keys in obj) {
-            console.log(obj[keys]);
-            text += obj[keys];
+    addBookToLibrary(new Book(title, author, numPages, hasRead));
+    displayLibrary();
+});
+
+
+function displayLibrary() {
+    let displayContainer = document.getElementById("display-catalog");
+    let displayDiv = document.createElement("div");
+    myLibrary.forEach(book => {
+        let info = "";
+        for(let key in book) {
+            info += book[key];            
         }
-        div.textContent = text;
-        catalog.appendChild(div);
-    }
+        displayDiv.textContent = info;
+        displayContainer.appendChild(displayDiv);
+    })
 }
+
+document.onload = displayLibrary();
